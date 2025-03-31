@@ -1,0 +1,18 @@
+name: AntiAbuseCommands
+version: 1.0
+main: net.enderbyteprograms.antiabuse.AntiAbuseMain
+description: Prevent abuse when using vanilla commands
+api-version: 1.21.4
+author: Enderbyte09
+softdepend: [Multiverse-Core]
+permissions:
+  aac.give.exempt:
+    default: op
+  aac.teleport.exempt:
+    default: op
+  aac.gamemode.exempt:
+    default: op
+  aac.multiverse.exempt:
+    default: op
+  aac.transfer.exempt:
+    default: op
