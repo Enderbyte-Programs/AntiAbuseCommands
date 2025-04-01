@@ -11,7 +11,7 @@ import java.util.UUID;
 public class Gamemode implements Module{
     @Override
     public String[] GetAliases() {
-        return new String[] {"gamemode"};
+        return new String[] {"gamemode","minecraft:gamemode"};
     }
 
     @Override

@@ -11,7 +11,7 @@ import java.util.UUID;
 public class Give implements Module{
     @Override
     public String[] GetAliases() {
-        return new String[]{"give"};
+        return new String[]{"give","minecraft:give"};
     }
 
     @Override
