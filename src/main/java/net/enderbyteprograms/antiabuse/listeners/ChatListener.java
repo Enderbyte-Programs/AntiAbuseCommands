@@ -1,10 +1,8 @@
 package net.enderbyteprograms.antiabuse.listeners;
 
 import net.enderbyteprograms.antiabuse.Static;
-import net.enderbyteprograms.antiabuse.modules.Gamemode;
-import net.enderbyteprograms.antiabuse.modules.Give;
+import net.enderbyteprograms.antiabuse.modules.*;
 import net.enderbyteprograms.antiabuse.modules.Module;
-import net.enderbyteprograms.antiabuse.modules.Transfer;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
@@ -24,6 +22,7 @@ public class ChatListener implements Listener {
         ConfigMappings.put("give", new Give());
         ConfigMappings.put("gamemode", new Gamemode());
         ConfigMappings.put("transfer",new Transfer());
+        ConfigMappings.put("multiverse",new Multiverse());
 
         for (String cname : ConfigMappings.keySet()) {
             if (Static.Configuration.getBoolean(cname + ".enabled")) {
@@ -31,11 +30,15 @@ public class ChatListener implements Listener {
                 Module module = ConfigMappings.get(cname);
                 if (Arrays.asList(module.GetAliases()).contains(commandhead)) {
                     //Detected that this module should run
-                    boolean isvalid = module.IsValid(commandtext, event.getPlayer());
-                    if (!isvalid) {
-                        Static.PluginRoot.getLogger().warning("ATTN - " + event.getPlayer().getDisplayName() + " tried to abuse commands! (" + commandtext + ")");
-                        event.setCancelled(true);
-                        return;
+                    try {
+                        boolean isvalid = module.IsValid(commandtext, event.getPlayer());
+                        if (!isvalid) {
+                            Static.PluginRoot.getLogger().warning("ATTN - " + event.getPlayer().getDisplayName() + " tried to abuse commands! (" + commandtext + ")");
+                            event.setCancelled(true);
+                            return;
+                        }
+                    } catch (Exception e) {
+                        Static.PluginRoot.getLogger().warning("Processor crashed - "+e.getMessage());
                     }
                 }
             }
