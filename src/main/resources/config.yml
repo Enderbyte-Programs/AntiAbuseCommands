@@ -5,7 +5,7 @@ give:
     - old_server_nether
     - old_server_the_end
     - parkour
-  same-world-only: false
+  same-world-only: true
   to-self-only: false
 
 teleport:

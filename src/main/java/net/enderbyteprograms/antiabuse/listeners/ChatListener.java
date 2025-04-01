@@ -13,10 +13,20 @@ import java.util.Arrays;
 import java.util.HashMap;
 
 public class ChatListener implements Listener {
+
+    private boolean recursivestartswith(String[] valstocheck,String searcher) {
+        for (String v : valstocheck) {
+            if (searcher.startsWith(v)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     @EventHandler
     public void onChat(PlayerCommandPreprocessEvent event) {
         String commandtext = event.getMessage();
-        String commandhead = commandtext.split(" ")[0].replace("/","");
+        String commandhead = commandtext.replace("/","");
 
         HashMap<String,Module> ConfigMappings = new HashMap<>();
         ConfigMappings.put("give", new Give());
@@ -28,7 +38,7 @@ public class ChatListener implements Listener {
             if (Static.Configuration.getBoolean(cname + ".enabled")) {
                 //Has been enabled
                 Module module = ConfigMappings.get(cname);
-                if (Arrays.asList(module.GetAliases()).contains(commandhead)) {
+                if (recursivestartswith(module.GetAliases(),commandhead)) {
                     //Detected that this module should run
                     try {
                         boolean isvalid = module.IsValid(commandtext, event.getPlayer());

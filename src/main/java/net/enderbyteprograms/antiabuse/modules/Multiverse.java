@@ -7,7 +7,7 @@ import org.bukkit.entity.Player;
 public class Multiverse implements Module{
     @Override
     public String[] GetAliases() {
-        return new String[] {"mvtp","multiverse:mvtp","multiversetp","mvteleport","multiverseteleport","multiverse:multiversetp","multiverse:mvteleport","multiverse:multiverseteleport"};
+        return new String[] {"mvtp","multiverse:mvtp","multiversetp","mvteleport","multiverseteleport","multiverse:multiversetp","multiverse:mvteleport","multiverse:multiverseteleport","mv tp","multiverse:mv tp"};
     }
 
     @Override
@@ -15,9 +15,16 @@ public class Multiverse implements Module{
 
         String target = text.split(" ")[1];//Players should never be sending player info anyway
 
+
         //Exempt?
         if (executor.hasPermission("aac.multiverse.exempt")) {
             return true;
+        }
+
+        //Detect alternate syntax
+        if (target.equals("tp")) {
+            executor.sendMessage(ChatColor.RED + "Use /mvtp <world>" + ChatColor.RED);
+            return false;
         }
 
         //Not in approved list?
