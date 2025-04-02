@@ -8,6 +8,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -33,6 +35,7 @@ public class ChatListener implements Listener {
         ConfigMappings.put("gamemode", new Gamemode());
         ConfigMappings.put("transfer",new Transfer());
         ConfigMappings.put("multiverse",new Multiverse());
+        ConfigMappings.put("teleport",new Teleport());
 
         for (String cname : ConfigMappings.keySet()) {
             if (Static.Configuration.getBoolean(cname + ".enabled")) {
@@ -48,7 +51,9 @@ public class ChatListener implements Listener {
                             return;
                         }
                     } catch (Exception e) {
-                        Static.PluginRoot.getLogger().warning("Processor crashed - "+e.getMessage());
+                        StringWriter sw = new StringWriter();
+                        e.printStackTrace(new PrintWriter(sw));//Come on java, there is a better way
+                        Static.PluginRoot.getLogger().warning("Processor crashed - "+sw.toString());
                     }
                 }
             }

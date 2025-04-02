@@ -7,7 +7,7 @@ import org.bukkit.entity.Player;
 public class Multiverse implements Module{
     @Override
     public String[] GetAliases() {
-        return new String[] {"mvtp","multiverse:mvtp","multiversetp","mvteleport","multiverseteleport","multiverse:multiversetp","multiverse:mvteleport","multiverse:multiverseteleport","mv tp","multiverse:mv tp"};
+        return new String[] {"mvtp","multiverse:mvtp","multiversetp","mvteleport","multiverseteleport","multiverse:multiversetp","multiverse:mvteleport","multiverse:multiverseteleport","mv tp","multiverse:mv tp","multiverse-core:mvtp","multiverse-core:mv tp"};
     }
 
     @Override
