@@ -5,6 +5,9 @@ description: Prevent abuse when using vanilla commands
 api-version: 1.21.4
 author: Enderbyte09
 softdepend: [Multiverse-Core]
+commands:
+  aac:
+    description: Anti Abuse Commands
 permissions:
   aac.give.exempt:
     default: op
@@ -15,4 +18,6 @@ permissions:
   aac.multiverse.exempt:
     default: op
   aac.transfer.exempt:
+    default: op
+  aac.admin:
     default: op
