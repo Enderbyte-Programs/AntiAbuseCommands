@@ -13,10 +13,20 @@ import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 public class ChatListener implements Listener {
 
-    private boolean recursivestartswith(String[] valstocheck,String searcher) {
+    private boolean recursivestartswith(List<String> valstocheck, String searcher) {
+        for (String v : valstocheck) {
+            if (searcher.startsWith(v)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean recursivestartswith(String[] valstocheck, String searcher) {
         for (String v : valstocheck) {
             if (searcher.startsWith(v)) {
                 return true;
@@ -43,6 +53,11 @@ public class ChatListener implements Listener {
                 Module module = ConfigMappings.get(cname);
                 if (recursivestartswith(module.GetAliases(),commandhead)) {
                     //Detected that this module should run
+
+                    if (recursivestartswith(Static.Configuration.getStringList("whitelist-commands"),commandhead)) {
+                        continue;
+                    }
+
                     try {
                         boolean isvalid = module.IsValid(commandtext, event.getPlayer());
                         if (!isvalid) {

@@ -37,3 +37,9 @@ multiverse:
 transfer:
   enabled: true
   block-other-players: true
+
+whitelist-commands:
+  - tpa
+  - tpahere
+  - tpcancel
+  - tpaccept

@@ -14,6 +14,12 @@ public class AntiAbuseMain extends JavaPlugin {
         this.getCommand("aac").setTabCompleter(new AACTabCompleter());
         this.saveDefaultConfig();
         Static.Configuration = getConfig();
+
+        if (!Static.Configuration.contains("whitelist-commands")) {
+            this.saveDefaultConfig();
+            this.saveConfig();
+        }
+
         getLogger().info("Anti-abuse commands is ready");
     }
     @Override
