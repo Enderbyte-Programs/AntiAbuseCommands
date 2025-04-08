@@ -19,5 +19,18 @@ permissions:
     default: op
   aac.transfer.exempt:
     default: op
+  aac.summon.exempt:
+    default: op
+  aac.exempt:
+    default: op
+    children:
+      aac.give.exempt: true
+      aac.gamemode.exempt: true
+      aac.multiverse.exempt: true
+      aac.transfer.exempt: true
+      aac.teleport.exempt: true
+      aac.summon.exempt: true
   aac.admin:
     default: op
+    children:
+      aac.exempt: true

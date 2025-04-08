@@ -7,6 +7,10 @@ give:
     - parkour
   same-world-only: true
   to-self-only: false
+  forbidden:
+    - command_block
+    - repeating_command_block
+    - chain_command_block
 
 teleport:
   enabled: true
@@ -38,8 +42,14 @@ transfer:
   enabled: true
   block-other-players: true
 
+summon:
+  enabled: true
+  forbidden:
+    - command_block_minecart
+
 whitelist-commands:
   - tpa
   - tpahere
   - tpcancel
   - tpaccept
+  - tpdeny

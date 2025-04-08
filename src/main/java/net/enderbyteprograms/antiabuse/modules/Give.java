@@ -36,9 +36,7 @@ public class Give implements Module{
                 executor.sendMessage(ChatColor.RED + "You may not execute mass commands" + ChatColor.RESET);
                 return false;
             } //@p and @s are OK
-            else {
-                return true;
-            }
+
         }
 
         //Check for UUIDs - not allowed
@@ -50,10 +48,14 @@ public class Give implements Module{
             //We want this!
         }
 
+        if (towho.equals("@s") || towho.equals("@p")) {
+            towho = executor.getName();
+        }
+        //@s alone throws error
+
         //Find world
         String exworld = executor.getWorld().getName();
         String tgworld = Bukkit.getPlayer(towho).getWorld().getName();
-
 
         //Find same world
         if (Static.Configuration.getBoolean("give.same-world.only") && !exworld.equals(tgworld)) {
@@ -65,6 +67,18 @@ public class Give implements Module{
         if (!Static.Configuration.getList("give.worlds").contains(tgworld)) {
             executor.sendMessage(ChatColor.RED + "You may not give to that world." + ChatColor.RESET);
             return false;
+        }
+
+        //Check for forbidden items
+        String itemhead = text.split(" ")[2].split("\\[")[0].split("\\{")[0];//Strip NBT
+        if (itemhead.contains(":")) {
+            itemhead = itemhead.split(":")[1];//Strip namespace
+        }
+        for (String forbiddenitemname : Static.Configuration.getStringList("give.forbidden")) {
+            if (itemhead.equals(forbiddenitemname)) {
+                executor.sendMessage(ChatColor.RED + "That item has been forbidden" + ChatColor.RESET);
+                return false;
+            }
         }
 
         //Should be OK

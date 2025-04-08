@@ -46,6 +46,7 @@ public class ChatListener implements Listener {
         ConfigMappings.put("transfer",new Transfer());
         ConfigMappings.put("multiverse",new Multiverse());
         ConfigMappings.put("teleport",new Teleport());
+        ConfigMappings.put("summon", new Summon());
 
         for (String cname : ConfigMappings.keySet()) {
             if (Static.Configuration.getBoolean(cname + ".enabled")) {
