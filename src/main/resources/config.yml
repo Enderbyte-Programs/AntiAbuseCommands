@@ -46,6 +46,8 @@ summon:
   enabled: true
   forbidden:
     - command_block_minecart
+    - falling_block
+  strict-find: true
 
 whitelist-commands:
   - tpa

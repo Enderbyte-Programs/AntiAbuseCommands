@@ -32,6 +32,14 @@ public class AntiAbuseMain extends JavaPlugin {
             saveConfig();
         }
 
+        if (!this.getConfig().contains("summon.strict-find",true)) {
+            //Update to mark 5
+            getLogger().info("Updating config to mark 5");
+            this.getConfig().set("summon.strict-find",true);
+
+            saveConfig();
+        }
+
         this.reloadConfig();
         Static.Configuration = getConfig();
 

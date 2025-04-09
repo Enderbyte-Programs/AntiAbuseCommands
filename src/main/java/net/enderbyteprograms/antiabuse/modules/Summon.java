@@ -29,6 +29,13 @@ public class Summon implements Module{
                 executor.sendMessage(ChatColor.RED + "That has been forbidden" + ChatColor.RESET);
                 return false;
             }
+
+            if (Static.Configuration.getBoolean("summon.strict-find")) {
+                if (text.contains(forbiddenitemname)) {
+                    executor.sendMessage(ChatColor.RED + "Nice try, but that has been forbidden" + ChatColor.RESET);
+                    return false;
+                }
+            }
         }
 
         return true;
