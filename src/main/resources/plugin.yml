@@ -4,7 +4,7 @@ main: net.enderbyteprograms.antiabuse.AntiAbuseMain
 description: Prevent abuse when using vanilla commands
 api-version: 1.21.4
 author: Enderbyte09
-softdepend: [Multiverse-Core]
+softdepend: [Multiverse-Core,BooksWithoutBorders]
 commands:
   aac:
     description: Anti Abuse Commands
@@ -21,6 +21,10 @@ permissions:
     default: op
   aac.summon.exempt:
     default: op
+  aac.settitle.exempt:
+    default: op
+  aac.setlore.exempt:
+    default: op
   aac.exempt:
     default: op
     children:
@@ -30,6 +34,8 @@ permissions:
       aac.transfer.exempt: true
       aac.teleport.exempt: true
       aac.summon.exempt: true
+      aac.settitle.exempt: true
+      aac.setlore.exempt: true
   aac.admin:
     default: op
     children:

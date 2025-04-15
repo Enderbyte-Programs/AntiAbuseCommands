@@ -49,7 +49,20 @@ summon:
     - falling_block
   strict-find: true
 
+settitle:
+  enabled: true
+  allowed:
+    - written_book
+    - writable_book
+
+setlore:
+  enabled: true
+  allowed:
+    - written_book
+    - writable_book
+
 whitelist-commands:
+  #These commands will be ignored and not processed
   - tpa
   - tpahere
   - tpcancel

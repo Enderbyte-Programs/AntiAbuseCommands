@@ -16,6 +16,19 @@ public class AntiAbuseMain extends JavaPlugin {
         this.getCommand("aac").setTabCompleter(new AACTabCompleter());
         this.saveDefaultConfig();
 
+        Patch();//Make sure config is updated to latest version.
+
+        this.reloadConfig();
+        Static.Configuration = getConfig();
+
+        getLogger().info("Anti-abuse commands is ready");
+    }
+    @Override
+    public void onDisable() {
+        getLogger().info("Goodbye!");
+    }
+
+    public void Patch() {
         if (!this.getConfig().contains("whitelist-commands",true)) {
             getLogger().info("Updating config to mark 3");
             this.getConfig().set("whitelist-commands",Arrays.asList(new String[] {"placeholder"}));
@@ -40,13 +53,15 @@ public class AntiAbuseMain extends JavaPlugin {
             saveConfig();
         }
 
-        this.reloadConfig();
-        Static.Configuration = getConfig();
+        if (!this.getConfig().contains("settitle",true)) {
+            //Update to mark 6
+            getLogger().info("Updating config to mark 6");
+            this.getConfig().set("settitle.enabled",true);
+            this.getConfig().set("settitle.allowed",Arrays.asList(new String[] {"written_book","writable_book"}));
+            this.getConfig().set("setlore.enabled",true);
+            this.getConfig().set("setlore.allowed",Arrays.asList(new String[] {"written_book","writable_book"}));
 
-        getLogger().info("Anti-abuse commands is ready");
-    }
-    @Override
-    public void onDisable() {
-        getLogger().info("Goodbye!");
+            saveConfig();
+        }
     }
 }

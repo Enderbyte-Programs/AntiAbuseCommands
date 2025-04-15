@@ -3,6 +3,8 @@ package net.enderbyteprograms.antiabuse.listeners;
 import net.enderbyteprograms.antiabuse.Static;
 import net.enderbyteprograms.antiabuse.modules.*;
 import net.enderbyteprograms.antiabuse.modules.Module;
+import net.enderbyteprograms.antiabuse.modules.bwb.Setlore;
+import net.enderbyteprograms.antiabuse.modules.bwb.Settitle;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
@@ -47,6 +49,8 @@ public class ChatListener implements Listener {
         ConfigMappings.put("multiverse",new Multiverse());
         ConfigMappings.put("teleport",new Teleport());
         ConfigMappings.put("summon", new Summon());
+        ConfigMappings.put("settitle",new Settitle());
+        ConfigMappings.put("setlore",new Setlore());
 
         for (String cname : ConfigMappings.keySet()) {
             if (Static.Configuration.getBoolean(cname + ".enabled")) {
@@ -60,6 +64,7 @@ public class ChatListener implements Listener {
                     }
 
                     try {
+                        Static.PluginRoot.getLogger().info(String.format("Intercepted command %s by %s",commandhead.split(" ")[0],event.getPlayer().getDisplayName()));
                         boolean isvalid = module.IsValid(commandtext, event.getPlayer());
                         if (!isvalid) {
                             Static.PluginRoot.getLogger().warning("ATTN - " + event.getPlayer().getDisplayName() + " tried to abuse commands! (" + commandtext + ")");
