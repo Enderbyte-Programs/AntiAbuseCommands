@@ -70,14 +70,23 @@ public class Give implements Module{
         }
 
         //Check for forbidden items
-        String itemhead = text.split(" ")[2].split("\\[")[0].split("\\{")[0];//Strip NBT
-        if (itemhead.contains(":")) {
-            itemhead = itemhead.split(":")[1];//Strip namespace
-        }
-        for (String forbiddenitemname : Static.Configuration.getStringList("give.forbidden")) {
-            if (itemhead.equals(forbiddenitemname)) {
-                executor.sendMessage(ChatColor.RED + "That item has been forbidden" + ChatColor.RESET);
-                return false;
+        if (Static.Configuration.getBoolean("give.strict")) {
+            for (String forbiddenitemname : Static.Configuration.getStringList("give.forbidden")) {
+                if (text.contains(forbiddenitemname)) {
+                    executor.sendMessage(ChatColor.RED + "That item is not allowed." + ChatColor.RESET);
+                    return false;
+                }
+            }
+        } else {
+            String itemhead = text.split(" ")[2].split("\\[")[0].split("\\{")[0];//Strip NBT
+            if (itemhead.contains(":")) {
+                itemhead = itemhead.split(":")[1];//Strip namespace
+            }
+            for (String forbiddenitemname : Static.Configuration.getStringList("give.forbidden")) {
+                if (itemhead.equals(forbiddenitemname)) {
+                    executor.sendMessage(ChatColor.RED + "That item has been forbidden" + ChatColor.RESET);
+                    return false;
+                }
             }
         }
 

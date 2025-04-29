@@ -63,5 +63,13 @@ public class AntiAbuseMain extends JavaPlugin {
 
             saveConfig();
         }
+
+        if (!this.getConfig().contains("give.strict",true)) {
+            //Update to mark 7
+            getLogger().info("Updating config to mark 7");
+            this.getConfig().set("give.strict",false);
+
+            saveConfig();
+        }
     }
 }

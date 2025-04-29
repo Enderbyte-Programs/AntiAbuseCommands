@@ -11,6 +11,8 @@ give:
     - command_block
     - repeating_command_block
     - chain_command_block
+    - Owner
+  strict: true
 
 teleport:
   enabled: true
