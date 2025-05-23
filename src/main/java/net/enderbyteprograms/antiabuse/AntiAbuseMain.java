@@ -71,5 +71,14 @@ public class AntiAbuseMain extends JavaPlugin {
 
             saveConfig();
         }
+
+        if (!this.getConfig().contains("parkour",true)) {
+            //Update to mark 8
+            getLogger().info("Updating config to mark 8");
+            this.getConfig().set("parkour.enabled",true);
+            this.getConfig().set("parkour.blocked-regexes",new String[]{"setcourse \\S+ command"});
+
+            saveConfig();
+        }
     }
 }

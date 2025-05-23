@@ -11,7 +11,7 @@ public class AACCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         if (strings.length == 0) {
-            commandSender.sendMessage("AntiAbuseCommands Mark 7 Patch 1 - (c) 2025 Enderbyte Programs");
+            commandSender.sendMessage("AntiAbuseCommands Mark 8 Patch 1 - (c) 2025 Enderbyte Programs");
         } else {
             if (strings[0].equals("reload")) {
                 if (!commandSender.hasPermission("aac.admin")) {

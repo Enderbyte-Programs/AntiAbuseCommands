@@ -25,6 +25,8 @@ permissions:
     default: op
   aac.setlore.exempt:
     default: op
+  aac.parkour.exempt:
+    default: op
   aac.exempt:
     default: op
     children:
@@ -36,6 +38,7 @@ permissions:
       aac.summon.exempt: true
       aac.settitle.exempt: true
       aac.setlore.exempt: true
+      aac.parkour.exempt: true
   aac.admin:
     default: op
     children:

@@ -63,6 +63,11 @@ setlore:
     - written_book
     - writable_book
 
+parkour:
+  enabled: true
+  blocked-regexes:
+    - setcourse \S+ command
+
 whitelist-commands:
   #These commands will be ignored and not processed
   - tpa
@@ -70,3 +75,12 @@ whitelist-commands:
   - tpcancel
   - tpaccept
   - tpdeny
+
+settings:
+  #Overall plugin settings
+  print-traceback: false
+  #Will the plugin print the full traceback if the processor fails?
+  note-intercept: false
+  #Will the plugin log when it intercepts a command, pass or fail?
+  note-alert: true
+  #Will the plugin log when it catches someone trying to abuse?

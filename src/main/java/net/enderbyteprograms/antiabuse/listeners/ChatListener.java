@@ -40,6 +40,7 @@ public class ChatListener implements Listener {
     @EventHandler
     public void onChat(PlayerCommandPreprocessEvent event) {
         String commandtext = event.getMessage();
+        //Static.PluginRoot.getLogger().info(commandtext);
         String commandhead = commandtext.replace("/","");
 
         HashMap<String,Module> ConfigMappings = new HashMap<>();
@@ -51,6 +52,7 @@ public class ChatListener implements Listener {
         ConfigMappings.put("summon", new Summon());
         ConfigMappings.put("settitle",new Settitle());
         ConfigMappings.put("setlore",new Setlore());
+        ConfigMappings.put("parkour",new Parkour());
 
         for (String cname : ConfigMappings.keySet()) {
             if (Static.Configuration.getBoolean(cname + ".enabled")) {
