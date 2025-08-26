@@ -48,6 +48,7 @@ public class ChatListener implements Listener {
         ConfigMappings.put("gamemode", new Gamemode());
         ConfigMappings.put("transfer",new Transfer());
         ConfigMappings.put("multiverse",new Multiverse());
+        ConfigMappings.put("tpa",new Tpa());//MUST come before teleport due to command naming restrictions!
         ConfigMappings.put("teleport",new Teleport());
         ConfigMappings.put("summon", new Summon());
         ConfigMappings.put("settitle",new Settitle());
@@ -78,6 +79,8 @@ public class ChatListener implements Listener {
                         e.printStackTrace(new PrintWriter(sw));//Come on java, there is a better way
                         Static.PluginRoot.getLogger().warning("Processor crashed - "+sw.toString());
                     }
+
+
                 }
             }
         }

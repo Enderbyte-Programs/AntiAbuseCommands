@@ -80,5 +80,14 @@ public class AntiAbuseMain extends JavaPlugin {
 
             saveConfig();
         }
+
+        if (!this.getConfig().contains("tpa",true)) {
+            //Update to mark 8
+            getLogger().info("Updating config to mark 9");
+            this.getConfig().set("tpa.enabled",true);
+            this.getConfig().set("tpa.allowed-worlds",new String[]{"survival","survival-end","survival-nether"});
+
+            saveConfig();
+        }
     }
 }

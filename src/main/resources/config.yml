@@ -70,11 +70,18 @@ parkour:
 
 whitelist-commands:
   #These commands will be ignored and not processed
-  - tpa
-  - tpahere
   - tpcancel
   - tpaccept
   - tpdeny
+
+tpa:
+  enabled: true
+  #Will be blocked if both source and target are not in allowed world
+  allowed-worlds:
+    - survival
+    - survival-end
+    - survival-nether
+
 
 settings:
   #Overall plugin settings

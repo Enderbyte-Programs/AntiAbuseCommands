@@ -35,6 +35,12 @@ public class Teleport implements Module{
     @Override
     public boolean IsValid(String text, Player executor) {
 
+        //Check if exempt tpa
+        String root = text.split(" ")[0];
+        if (root.contains("tpa")) {
+            return true;//Pass through exemption
+        }
+
         //Some quick replaces
         text = text.replace("@s", executor.getDisplayName()).replace("@p",executor.getDisplayName());
 
