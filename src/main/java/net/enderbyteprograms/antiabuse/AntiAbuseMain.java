@@ -89,5 +89,20 @@ public class AntiAbuseMain extends JavaPlugin {
 
             saveConfig();
         }
+
+        if (!this.getConfig().contains("enchant",true)) {
+            getLogger().info("Updating config to mark 10");
+            this.getConfig().set("enchant.enabled",true);
+            this.getConfig().set("attribute.enabled",true);
+            String[] defaultallowedworlds = new String[]{"old_server","old_server_nether","old_server_the_end"};
+            this.getConfig().set("enchant.allowed-worlds",defaultallowedworlds);
+            this.getConfig().set("attribute.allowed-worlds",defaultallowedworlds);
+
+            saveConfig();
+        }
+
+        if (!this.getConfig().contains("settings",true)) {
+            getLogger().info("Updating config to mark 11");
+        }
     }
 }

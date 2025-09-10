@@ -82,6 +82,19 @@ tpa:
     - survival-end
     - survival-nether
 
+enchant:
+  enabled: true
+  allowed-worlds:
+    - old_server
+    - old_server_nether
+    - old_server_the_end
+
+attribute:
+  enabled: true
+  allowed-worlds:
+    - old_server
+    - old_server_nether
+    - old_server_the_end
 
 settings:
   #Overall plugin settings

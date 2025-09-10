@@ -54,6 +54,8 @@ public class ChatListener implements Listener {
         ConfigMappings.put("settitle",new Settitle());
         ConfigMappings.put("setlore",new Setlore());
         ConfigMappings.put("parkour",new Parkour());
+        ConfigMappings.put("enchant",new Enchant());
+        ConfigMappings.put("attribute",new Attribute());
 
         for (String cname : ConfigMappings.keySet()) {
             if (Static.Configuration.getBoolean(cname + ".enabled")) {

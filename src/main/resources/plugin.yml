@@ -27,6 +27,10 @@ permissions:
     default: op
   aac.parkour.exempt:
     default: op
+  aac.enchant.exempt:
+    default: op
+  aac.attribute.exempt:
+    default: op
 
   aac.tpa.exempt:
     default: op
@@ -43,6 +47,8 @@ permissions:
       aac.setlore.exempt: true
       aac.parkour.exempt: true
       aac.tpa.exempt: true
+      aac.enchant.exempt: true
+      aac.attribute.exempt: true
   aac.admin:
     default: op
     children:
