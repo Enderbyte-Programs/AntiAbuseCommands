@@ -20,6 +20,9 @@ public class AntiAbuseMain extends JavaPlugin {
 
         this.reloadConfig();
         Static.Configuration = getConfig();
+        Static.printTraceback = Static.Configuration.getBoolean("settings.print-traceback");
+        Static.noteIntercept = Static.Configuration.getBoolean("settings.note-intercept");
+        Static.noteAlert = Static.Configuration.getBoolean("settings.note-alert");
 
         getLogger().info("Anti-abuse commands is ready");
     }
@@ -103,6 +106,9 @@ public class AntiAbuseMain extends JavaPlugin {
 
         if (!this.getConfig().contains("settings",true)) {
             getLogger().info("Updating config to mark 11");
+            this.getConfig().set("settings.print-traceback",false);
+            this.getConfig().set("settings.note-intercept",false);
+            this.getConfig().set("note-alert",true);
         }
     }
 }

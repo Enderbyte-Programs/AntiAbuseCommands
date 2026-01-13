@@ -11,7 +11,7 @@ public class AACCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         if (strings.length == 0) {
-            commandSender.sendMessage("AntiAbuseCommands Mark 10 Patch 1 - (c) 2025 Enderbyte Programs");
+            commandSender.sendMessage("AntiAbuseCommands Mark 11 Patch 0 - (c) 2025 Enderbyte Programs");
         } else {
             if (strings[0].equals("reload")) {
                 if (!commandSender.hasPermission("aac.admin")) {
@@ -21,6 +21,9 @@ public class AACCommand implements CommandExecutor {
                 commandSender.sendMessage("Reloading config...");
                 Static.PluginRoot.reloadConfig();
                 Static.Configuration = Static.PluginRoot.getConfig();
+                Static.printTraceback = Static.Configuration.getBoolean("settings.print-traceback");
+                Static.noteIntercept = Static.Configuration.getBoolean("settings.note-intercept");
+                Static.noteAlert = Static.Configuration.getBoolean("settings.note-alert");
                 commandSender.sendMessage("Reloaded successfully");
             }
         }

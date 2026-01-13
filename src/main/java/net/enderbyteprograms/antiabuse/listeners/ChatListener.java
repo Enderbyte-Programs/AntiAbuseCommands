@@ -69,17 +69,24 @@ public class ChatListener implements Listener {
                     }
 
                     try {
-                        Static.PluginRoot.getLogger().info(String.format("Intercepted command %s by %s",commandhead.split(" ")[0],event.getPlayer().getDisplayName()));
+                        if (Static.noteIntercept) {
+                            Static.PluginRoot.getLogger().info(String.format("Intercepted command %s by %s", commandhead.split(" ")[0], event.getPlayer().getDisplayName()));
+                        }
                         boolean isvalid = module.IsValid(commandtext, event.getPlayer());
                         if (!isvalid) {
-                            Static.PluginRoot.getLogger().warning("ATTN - " + event.getPlayer().getDisplayName() + " tried to abuse commands! (" + commandtext + ")");
+                            if (Static.noteAlert) {
+                                Static.PluginRoot.getLogger().warning("ATTN - " + event.getPlayer().getDisplayName() + " tried to abuse commands! (" + commandtext + ")");
+                            }
                             event.setCancelled(true);
                             return;
                         }
                     } catch (Exception e) {
-                        StringWriter sw = new StringWriter();
-                        e.printStackTrace(new PrintWriter(sw));//Come on java, there is a better way
-                        Static.PluginRoot.getLogger().warning("Processor crashed - "+sw.toString());
+                        if (Static.printTraceback) {
+
+                            StringWriter sw = new StringWriter();
+                            e.printStackTrace(new PrintWriter(sw));//Come on java, there is a better way
+                            Static.PluginRoot.getLogger().warning("Processor crashed - " + sw.toString());
+                        }
                     }
 
 
