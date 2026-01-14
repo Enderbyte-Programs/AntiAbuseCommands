@@ -10,7 +10,7 @@ public class WorldEdit implements Module{
 
     @Override
     public String[] GetAliases() {
-        return new String[] {"/","worldedit:/"};
+        return new String[] {"/","worldedit:","tool","superpickaxe","brush","replacenear","repl","flood","mask"};
     }
 
     @Override
