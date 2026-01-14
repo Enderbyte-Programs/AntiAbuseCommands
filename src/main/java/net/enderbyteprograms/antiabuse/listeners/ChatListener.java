@@ -5,6 +5,7 @@ import net.enderbyteprograms.antiabuse.modules.*;
 import net.enderbyteprograms.antiabuse.modules.Module;
 import net.enderbyteprograms.antiabuse.modules.bwb.Setlore;
 import net.enderbyteprograms.antiabuse.modules.bwb.Settitle;
+import org.bukkit.World;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
@@ -41,7 +42,7 @@ public class ChatListener implements Listener {
     public void onChat(PlayerCommandPreprocessEvent event) {
         String commandtext = event.getMessage();
         //Static.PluginRoot.getLogger().info(commandtext);
-        String commandhead = commandtext.replace("/","");
+        String commandhead = commandtext.substring(1);//Cut off /
 
         HashMap<String,Module> ConfigMappings = new HashMap<>();
         ConfigMappings.put("give", new Give());
@@ -56,6 +57,7 @@ public class ChatListener implements Listener {
         ConfigMappings.put("parkour",new Parkour());
         ConfigMappings.put("enchant",new Enchant());
         ConfigMappings.put("attribute",new Attribute());
+        ConfigMappings.put("worldedit",new WorldEdit());
 
         for (String cname : ConfigMappings.keySet()) {
             if (Static.Configuration.getBoolean(cname + ".enabled")) {
@@ -88,6 +90,8 @@ public class ChatListener implements Listener {
                             Static.PluginRoot.getLogger().warning("Processor crashed - " + sw.toString());
                         }
                     }
+
+                    return;
 
 
                 }

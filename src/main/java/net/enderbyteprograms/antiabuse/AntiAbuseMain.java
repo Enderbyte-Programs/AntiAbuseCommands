@@ -109,6 +109,16 @@ public class AntiAbuseMain extends JavaPlugin {
             this.getConfig().set("settings.print-traceback",false);
             this.getConfig().set("settings.note-intercept",false);
             this.getConfig().set("note-alert",true);
+
+            saveConfig();
+        }
+
+        if (!this.getConfig().contains("worldedit",true)) {
+            getLogger().info("Updating config to mark 12");
+            this.getConfig().set("worldedit.enabled",true);
+            this.getConfig().set("worldedit.banned-words",new String[] {"owner","command_block"});
+
+            saveConfig();
         }
     }
 }

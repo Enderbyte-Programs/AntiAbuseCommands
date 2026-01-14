@@ -104,3 +104,9 @@ settings:
   #Will the plugin log when it intercepts a command, pass or fail?
   note-alert: true
   #Will the plugin log when it catches someone trying to abuse?
+
+worldedit:
+  enabled: true
+  banned-words:
+    - owner
+    - command_block
